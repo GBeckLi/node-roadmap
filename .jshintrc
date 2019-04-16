@@ -1,0 +1,11 @@
+{
+  "node": true,
+  "es5": true,
+  "browser": false,
+  "unused": true,
+  "strict": true,
+  "asi": false,
+  "esnext": true,
+  "evil": false,
+  "devel": true
+}

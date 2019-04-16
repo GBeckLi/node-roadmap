@@ -1,0 +1,13 @@
+{
+  "name": "node-roadmap",
+  "version": "1.0.0",
+  "description": "node study note",
+  "main": "index.js",
+  "repository": "https://github.com/GBeckLi/node-roadmap.git",
+  "author": "lihuan",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "jshint": "^2.10.2"
+  }
+}
