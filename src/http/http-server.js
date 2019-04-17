@@ -7,7 +7,9 @@ const HOST = '127.0.0.1';
 
 const server = http.createServer((req, res) => {
   // logRequest(req, res);
-  requestHandle(req, res);
+  // requestHandle(req, res);
+  // serverResponse(req, res);
+  fileContentResponse(req, res);
 
 }).listen(PORT, HOST);
 
@@ -31,6 +33,36 @@ function requestHandle(req, res) {
     req.on('end', () => {
       console.log('客户端请求数据已全部接受完毕！');
     });
+  }
+  res.end();
+}
+
+function fileContentResponse(req, res) {
+  if (req.url !== '/favicon.ico') {
+    fs.readFile(path.resolve(__dirname, './../../assets/log/request.log'), (err, data) => {
+      if (err) {
+        console.log('读取文件发生错误！');
+      } else {
+        res.writeHead(200, {
+          'Content-Type': 'text/plain',
+          'Access-Control-Allow-Origin': 'http://localhost:8086'
+        });
+        const flag = res.write(data);
+        console.log(flag);
+        res.end();
+      }
+    })
+  }
+}
+
+
+function serverResponse(req, res) {
+  if (req.url !== '/favicon.ico') {
+    res.writeHead(200, {
+      'Content-Type': 'text/plain',
+      'Access-Control-Allow-Origin': 'http://localhost:8086'
+    });
+    res.write('你好!\n', 'utf8');
   }
   res.end();
 }

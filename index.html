@@ -7,10 +7,26 @@
   <title>Index</title>
 </head>
 <body>
-  <form action="http://localhost:8085/" id="form" method="POST">
+  <!-- <form action="http://localhost:8085/" id="form" method="POST">
     Name: <input type="text" name="name" value="" /></br>
     Age: <input type="number" name="age" /></br>
     <input type="submit" value="提交" />
-  </form>
+  </form> -->
+  <div id="div"></div>
+  <input type="button" value="获取数据" onclick="getData()">
+  <script>
+    function getData() {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://localhost:8085', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            document.getElementById('div').innerHTML = xhr.responseText;
+          }
+        }
+      }
+      xhr.send(null);
+    }
+  </script>
 </body>
 </html>
